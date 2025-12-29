@@ -1,0 +1,39 @@
+{
+  "name": "trigger-cloudflare-cron",
+  "version": "1.0.0",
+  "description": "Script to manually trigger Cloudflare Worker cron jobs locally",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "trigger-cloudflare-cron": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build index.ts --outdir dist --target node --minify",
+    "dev": "bun run index.ts",
+    "prepare": "bun run build && node -e \"try { require('fs').chmodSync('dist/index.js', 0o755); } catch(e) {}\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "cron",
+    "wrangler"
+  ],
+  "author": {
+    "name": "Jeff Njoroge",
+    "email": "jeff283@users.noreply.github.com"
+  },
+  "license": "MIT"
+}
